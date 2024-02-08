@@ -17,7 +17,7 @@ const App = () => {
     fetchTodos();
   }, [])
 
-  const deleteTodos = async (id) => {
+  const deleteTodo = async (id) => {
     try {
       await axios.delete(`http://localhost:3000/todos/${id}`);
       console.log('Todo deleted successfully');
@@ -28,6 +28,17 @@ const App = () => {
     }
   };
 
+  const editTodo = async (id, newTitle) => {
+    try {
+      await axios.put(`http://localhost:3000/todos/${id}`, { title: newTitle });
+      console.log('Todo updated successfully');
+      const response = await axios.get('http://localhost:3000/todos');
+      setTodos(response.data);
+    } catch (error) {
+      console.error("Error updating todos : ", error);
+    }
+  }
+
   return (
     <div>
       <h1>Todo List</h1>
@@ -36,7 +47,8 @@ const App = () => {
         {todos.map(todo => (
           <li key={todo.id}>
             {todo.title}
-            <button onClick={() => deleteTodos(todo.id)} >Delete</button>
+            <button onClick={() => deleteTodo(todo.id)} >Delete</button>
+            <button onClick={() => editTodo(todo.id, "newTitle")} >Edit</button>
           </li>
         ))}
       </ul>

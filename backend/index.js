@@ -76,6 +76,22 @@ app.delete('/todos/:id', (req, res) => {
   });
 });
 
+//EDITING TODOS
+app.put('/todos/:id', (req, res) => {
+  const todoId = req.params.id;
+  const { title } = req.body;
+
+  db.query('UPDATE todos SET title = ? WHERE id = ?', [title, todoId], (err, result) => {
+    if (err) {
+      console.error('Error updating todo:', err);
+      res.send('Error updating todo');
+    } else {
+      console.log('Todo updated successfully');
+      res.send('Todo updated successfully');
+    }
+  });
+});
+
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
