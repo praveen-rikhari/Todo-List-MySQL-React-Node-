@@ -8,7 +8,7 @@ const TodoForm = ({ setTodos }) => {
     setTitle(e.target.value);
   };
 
-  const handleSubmit = async (e) => {
+  const addNewTodo = async (e) => {
     e.preventDefault();
     try {
       await axios.post('http://localhost:3000/todos', { title });
@@ -25,7 +25,7 @@ const TodoForm = ({ setTodos }) => {
 
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={addNewTodo}>
       <input
         type="text"
         placeholder="Enter your todo"
