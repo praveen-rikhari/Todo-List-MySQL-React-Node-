@@ -31,6 +31,10 @@ const App = () => {
   };
 
   const editTodo = async (id, newTitle) => {
+    if (newTitle.trim().length === 0) {
+      console.error("Tiltle cannot be empty");
+      return;
+    }
     try {
       await axios.put(`http://localhost:3000/todos/${id}`, { title: newTitle });
       console.log('Todo updated successfully');

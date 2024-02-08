@@ -10,6 +10,12 @@ const TodoForm = ({ setTodos }) => {
 
   const addNewTodo = async (e) => {
     e.preventDefault();
+
+    if (title.trim().length === 0) {
+      console.error("Tiltle cannot be empty");
+      return;
+    }
+
     try {
       await axios.post('http://localhost:3000/todos', { title });
       console.log('Todo added successfully 👍');
