@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import TodoForm from './TodoForm';
-import './App.css'
+import toast, { Toaster } from 'react-hot-toast';
+import './App.css';
 
 const App = () => {
   const [todos, setTodos] = useState([]);
@@ -23,7 +24,9 @@ const App = () => {
   const deleteTodo = async (id) => {
     try {
       await axios.delete(`http://localhost:3000/todos/${id}`);
+      toast.success('Todo deleted successfully 👍.')
       console.log('Todo deleted successfully');
+
       const response = await axios.get('http://localhost:3000/todos');
       setTodos(response.data);
     } catch (error) {
@@ -33,14 +36,19 @@ const App = () => {
 
   const editTodo = async (id, newTitle) => {
     if (newTitle.trim().length === 0) {
+      toast.error("Tiltle cannot be empty.");
       console.error("Tiltle cannot be empty");
       return;
     }
+    
     try {
       await axios.put(`http://localhost:3000/todos/${id}`, { title: newTitle });
       console.log('Todo updated successfully');
+      toast.success("Todo updated successfully 👍");
+
       const response = await axios.get('http://localhost:3000/todos');
       setTodos(response.data);
+
       setEditedId(null);
       setEditedTitle('');
     } catch (error) {
@@ -60,12 +68,15 @@ const App = () => {
     editTodo(editedId, editedTitle);
   }
 
-  return (
+  return (<>
+    <Toaster position='top-right' toastOptions={{ duration: 3000 }} />
     <div className='container'>
       <h1 className='heading'>
-        Todo List 📄
+        Todo List 📝
       </h1>
+
       <TodoForm setTodos={setTodos} />
+
       <ul className='todo-list'>
         {todos.map(todo => (
           <li key={todo.id} className='todo-item'>
@@ -94,6 +105,7 @@ const App = () => {
         ))}
       </ul>
     </div>
+  </>
   );
 };
 

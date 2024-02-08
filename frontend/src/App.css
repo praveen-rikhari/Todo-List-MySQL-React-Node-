@@ -136,3 +136,19 @@ input {
     background-color: #fff;
     box-shadow: 0 0 0 4px rgba(62, 221, 133, 0.1);
 }
+
+/* Media Query */
+@media screen and (max-width: 650px) {
+    .container {
+        width: 95%;
+    }
+    .heading {
+        font-size: 35px;
+    }
+    .add-form {
+        width: 100%;
+    }
+    .todo-list{
+        width: 100%;
+    }
+}

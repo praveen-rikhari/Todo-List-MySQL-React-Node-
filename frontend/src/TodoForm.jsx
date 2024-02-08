@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import toast from 'react-hot-toast';
 
 const TodoForm = ({ setTodos }) => {
   const [title, setTitle] = useState('');
@@ -13,12 +14,14 @@ const TodoForm = ({ setTodos }) => {
 
     if (title.trim().length === 0) {
       console.error("Tiltle cannot be empty");
+      toast.error("Tiltle cannot be empty");
       return;
     }
 
     try {
       await axios.post('http://localhost:3000/todos', { title });
       console.log('Todo added successfully 👍');
+      toast.success('Todo added successfully 👍');
 
       const response = await axios.get('http://localhost:3000/todos');
       console.log(response);
