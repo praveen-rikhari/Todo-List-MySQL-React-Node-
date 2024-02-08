@@ -45,6 +45,7 @@ app.get('/todos', (req, res) => {
   });
 });
 
+//  ADDING TODOS
 app.post('/todos', (req, res) => {
   const { title } = req.body;
   const todo = { title };
@@ -56,6 +57,21 @@ app.post('/todos', (req, res) => {
     } else {
       console.log('Todo added successfully');
       res.send('Todo added successfully');
+    }
+  });
+});
+
+//  DELETEING TODOS
+app.delete('/todos/:id', (req, res) => {
+  const todoId = req.params.id;
+
+  db.query('DELETE FROM todos WHERE id = ?', todoId, (err, result) => {
+    if (err) {
+      console.error('Error deleting todo:', err);
+      res.send('Error deleting todo');
+    } else {
+      console.log('Todo deleted successfully');
+      res.send('Todo deleted successfully');
     }
   });
 });
