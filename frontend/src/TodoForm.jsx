@@ -31,15 +31,21 @@ const TodoForm = ({ setTodos }) => {
 
 
   return (
-    <form onSubmit={addNewTodo}>
-      <input
-        type="text"
-        placeholder="Enter your todo"
-        value={title}
-        onChange={handleChange}
-      />
-      <button type="submit">Add Todo</button>
-    </form>
+    <>
+      <form className="add-form" onSubmit={addNewTodo}>
+        <input
+          className='add-input'
+          type="text"
+          placeholder="Enter your todo"
+          value={title}
+          onChange={handleChange}
+        />
+        <button className='btn btn-add' type="submit">
+          Add <i className="bi bi-plus-circle-fill"></i>
+        </button>
+      </form>
+      <hr />
+    </>
   );
 };
 

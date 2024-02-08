@@ -1,0 +1,138 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Comic Neue', 'sans-serif', cursive;
+}
+
+.container {
+    max-width: 800px;
+    width: 90%;
+    margin: 20px auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 12px;
+    border: 2px dashed #7d7d7d;
+}
+
+.heading {
+    font-size: 45px;
+}
+
+.add-form {
+    width: 80%;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #7d7d7d;
+}
+
+input {
+    flex-grow: 1;
+    display: inline-block;
+    padding: 10px 15px;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    outline: none;
+    background-color: #f3f3f4;
+    transition: .3s ease;
+    font-size: 15px;
+}
+
+.add-input:focus,
+.add-input:hover {
+    outline: none;
+    border-color: rgba(76, 147, 234, 0.4);
+    background-color: #fff;
+    box-shadow: 0 0 0 4px rgba(76, 134, 234, 0.1);
+}
+
+.btn {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-add {
+    margin-left: 15px;
+    background-color: #0077b6;
+    color: white;
+    font-weight: 900;
+    border: 2px solid #0077b6;
+    transition: 0.15s;
+}
+
+.btn-add:hover {
+    color: #0077b6;
+    background-color: transparent;
+}
+
+.btn-delete {
+    color: #ef233c;
+    background-color: transparent;
+}
+
+.btn-delete:hover {
+    color: #e9152e;
+}
+
+.btn-edit {
+    color: #40916c;
+    background-color: transparent;
+}
+
+.btn-save {
+    background-color: #52b788;
+    margin-left: 15px;
+    color: white;
+    font-weight: 900;
+    border: 2px solid #52b788;
+    transition: 0.3s;
+}
+
+.btn-save:hover {
+    color: #52b788;
+    background-color: transparent;
+}
+
+.lg {
+    font-size: 20px;
+}
+
+.todo-list {
+    width: 80%;
+    list-style-type: none;
+    padding: 15px;
+}
+
+.todo-item {
+    margin-bottom: 10px;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
+}
+
+.todo-item-content {
+    display: flex;
+    justify-content: center;
+}
+
+.todo-item-content span {
+    border-right: 1px solid #bababa;
+    padding-top: 8px;
+    font-size: 20px;
+    flex-grow: 1;
+}
+
+.save-input:focus,
+.save-input:hover {
+    outline: none;
+    border-color: rgba(12, 143, 101, 0.4);
+    background-color: #fff;
+    box-shadow: 0 0 0 4px rgba(62, 221, 133, 0.1);
+}

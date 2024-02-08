@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import TodoForm from './TodoForm';
+import './App.css'
 
 const App = () => {
   const [todos, setTodos] = useState([]);
@@ -60,28 +61,33 @@ const App = () => {
   }
 
   return (
-    <div>
-      <h1>Todo List</h1>
+    <div className='container'>
+      <h1 className='heading'>
+        Todo List 📄
+      </h1>
       <TodoForm setTodos={setTodos} />
-      <ul>
+      <ul className='todo-list'>
         {todos.map(todo => (
-          <li key={todo.id}>
+          <li key={todo.id} className='todo-item'>
             {
               editedId === todo.id ? (
-                <div>
+                <div className='todo-item-content' >
                   <input
+                    className='save-input'
                     type="text"
                     placeholder='edit todo here'
                     value={editedTitle}
                     onChange={handleEditChange}
                   />
-                  <button onClick={handleEditSave} >Save</button>
+                  <button className='btn btn-save' onClick={handleEditSave} >Save</button>
                 </div>
               ) : (
-                <div>
-                  {todo.title}
-                  <button onClick={() => deleteTodo(todo.id)} >Delete</button>
-                  <button onClick={() => handleEdit(todo.id, todo.title)} >Edit</button>
+                <div className='todo-item-content'>
+                  <span className="todo-title">{todo.title} </span>
+                  <div className="todo-buttons">
+                    <button className='btn btn-delete' onClick={() => deleteTodo(todo.id)} ><i className="bi bi-trash-fill lg"></i></button>
+                    <button className='btn btn-edit' onClick={() => handleEdit(todo.id, todo.title)} ><i className="bi bi-pencil-square lg"></i></button>
+                  </div>
                 </div>
               )}
           </li>
